@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <!-- Create Books Table -->
+    <changeSet id="create_table_book_20240726" author="author">
+        <createTable tableName="book">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="author" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="isbn" type="VARCHAR(13)">
+                <constraints unique="true" nullable="false"/>
+            </column>
+            <column name="published_date" type="DATE"/>
+        </createTable>
+    </changeSet>
+
+    <!-- Insert Initial Data -->
+    <changeSet id="insert_initial_data_20240726" author="author">
+        <insert tableName="book">
+            <column name="title" value="Spring Boot Guide"/>
+            <column name="author" value="John Doe"/>
+            <column name="isbn" value="1234567890123"/>
+            <column name="published_date" valueDate="2024-01-01"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
